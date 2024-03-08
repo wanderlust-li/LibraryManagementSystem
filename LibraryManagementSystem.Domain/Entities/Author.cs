@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LibraryManagementSystem.Domain;
+namespace LibraryManagementSystem.Domain.Entities;
 
 public class Author
 {
     [Key]
-    public int AuthorId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [MaxLength(100)]
@@ -17,6 +17,8 @@ public class Author
 
     public DateTime? DateOfBirth { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public int BookId { get; set; }
+    public virtual ICollection<Book> Books { get; set; }
+
     
 }
