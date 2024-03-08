@@ -1,21 +1,20 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LibraryManagementSystem.Domain;
+namespace LibraryManagementSystem.Domain.Entities;
 
 public class Book
 {
     [Key]
-    public int BookId { get; set; }
+    public int Id { get; set; }
 
     [MaxLength(255)]
     public string Title { get; set; }
 
     public int PublicationYear { get; set; }
-
-    [ForeignKey("Genre")]
+    
     public int GenreId { get; set; }
     public Genre Genre { get; set; }
 
-    public ICollection<Author> AuthorBooks { get; set; } = new List<Author>();
+    public int AuthorId { get; set; }
+    public virtual Author Author { get; set; }
 }
